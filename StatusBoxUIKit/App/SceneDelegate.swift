@@ -23,6 +23,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let rootViewModel = RootViewModel()
         let navigationController = UINavigationController(rootViewController: LoginViewController(rootViewModel: rootViewModel))
+        
+        rootViewModel.onViewChange = {
+            switch rootViewModel.activeView {
+            case .login:
+                window.rootViewController = UINavigationController(rootViewController: LoginViewController(rootViewModel: rootViewModel))
+            case .home:
+                window.rootViewController = UINavigationController(rootViewController: HomeViewController(rootViewModel: rootViewModel))
+            }
+        }
+        
+        window.rootViewController = navigationController
+        window.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

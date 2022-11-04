@@ -9,7 +9,7 @@ import Foundation
 
 
 enum Status {
-    case login, home, detail
+    case login, home
 }
 
 final class RootViewModel {
